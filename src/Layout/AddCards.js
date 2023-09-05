@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { createCard, readDeck } from "../utils/api"
 import "./style.css"
+import CardForm from "./CardForm"
 
 function AddCards({HomeNavBar}) {
-    const [cardFront, setCardFront] = useState("")
-    const [cardBack, setCardBack] = useState("")
+    const [front, setFront] = useState("")
+    const [back, setBack] = useState("")
     const [deckName, setDeckName] = useState("")
     const history = useHistory()
     const {deckId} = useParams()
@@ -24,40 +25,29 @@ function AddCards({HomeNavBar}) {
       }, [deckId]);
    
     const handleFrontChange = (event) => {
-        setCardFront(event.target.value)
+        setFront(event.target.value)
     }
 
     const handleBackChange = (event) => {
-        setCardBack(event.target.value)
+        setBack(event.target.value)
     }
     const submitHandler = (event) => {
         event.preventDefault()
         createCard( deckId, {
-            front: cardFront,
-            back: cardBack,
+            front: front,
+            back: back,
     })
-    setCardFront("")
-    setCardBack("")
+    setFront("")
+    setBack("")
     event.target.reset()
     }
     
     return (
         <div>
-        <p><HomeNavBar /> <span>{deckName} </span><span>/ Add Card</span></p>
-        <h1><span>{deckName}</span> : <span>Add Card</span></h1>
-            <form id="addCardForm" onSubmit={submitHandler}>
-                <div>
-                    <label className="label-text" htmlFor="cardFront">Front</label>
-                    <textarea id="cardFront" onChange={handleFrontChange} type="text" name="cardFront" />
-                </div>
-                <div>
-                    <label className="label-text" htmlFor="cardBack">Back</label>
-                    <textarea id="cardBack" onChange={handleBackChange} type="text" name="cardBack" />
-                </div>
-                <button type="button" onClick={() => history.push(`/decks/${deckId}/view`)}>Done</button>
-                <button type="submit">Save</button>
-            </form>
-            </div>
+            <p><HomeNavBar /> <span>{deckName} </span><span>/ Add Card</span></p>
+            <h1><span>{deckName}</span> : <span>Add Card</span></h1>
+            <CardForm submitHandler={submitHandler} front={front} back={back} handleFrontChange={handleFrontChange} handleBackChange={handleBackChange}/>
+        </div>
     )
 }
 

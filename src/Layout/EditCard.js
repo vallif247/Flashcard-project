@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { readDeck, readCard, updateCard } from "../utils/api/index";
+import CardForm from "./CardForm"
 
 function EditCard({HomeNavBar}) {
 const [deckName, setDeckName] = useState("")
@@ -50,21 +51,10 @@ return (
   <div>
     <p><HomeNavBar /> {deckName} / Edit Card {cardId}</p>
     <h1>Edit Card</h1>
-    <form onSubmit={submitHandler}>
-      <div>
-         <label className="label-text" htmlFor="editFront">Front</label>
-          <textarea id="editFront" value={front} onChange={handleFrontChange} type="text" name="cardFront" />
-      </div>
-      <div>
-          <label className="label-text" htmlFor="editBack">Back</label>
-          <textarea id="editBack" value={back} rows="5" onChange={handleBackChange} type="text" name="cardBack" />
-      </div>
-      <button type="button" onClick={() => history.push(`/decks/${deckId}/view`)}>Cancel</button>
-      <button type="submit">Submit</button>
-    </form>
+    < CardForm submitHandler={submitHandler} front={front} back={back} handleFrontChange={handleFrontChange} handleBackChange={handleBackChange}/>
   </div>
 )
 
 }
-
 export default EditCard
+

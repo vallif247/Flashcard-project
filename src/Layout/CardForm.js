@@ -1,6 +1,8 @@
 import React from "react";
+import {useHistory} from "react-router-dom";
 
-function CardForm({submitHandler, front, back, handleFrontChange, handleBackChange}) {
+function CardForm({deckId, submitHandler, front, back, handleFrontChange, handleBackChange}) {
+    const history = useHistory()
     return (
     <div>
 <form onSubmit={submitHandler}>

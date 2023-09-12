@@ -35,8 +35,18 @@ useEffect(() => {
 
 
 
-const handleFrontChange = (event) => setFront(event.target.value)
-const handleBackChange = (event) => setBack(event.target.value)
+const handleFrontChange = (event) => {
+  if (front === undefined || front === null) {
+    console.warn(`Warning: Input is changing an uncontrolled input of type ${event.type} to be controlled.`)
+}
+setFront(event.target.value)
+} 
+const handleBackChange = (event) => {
+  if (back === undefined || back === null) {
+    console.warn(`Warning: Input is changing an uncontrolled input of type ${event.type} to be controlled.`)
+}
+  setBack(event.target.value)
+}
 
 const submitHandler = (event) => {
   event.preventDefault()

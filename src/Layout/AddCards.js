@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { useHistory, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { createCard, readDeck } from "../utils/api"
 import "./style.css"
 import CardForm from "./CardForm"
@@ -8,7 +8,6 @@ function AddCards({HomeNavBar}) {
     const [front, setFront] = useState("")
     const [back, setBack] = useState("")
     const [deckName, setDeckName] = useState("")
-    const history = useHistory()
     const {deckId} = useParams()
 
 
@@ -25,10 +24,16 @@ function AddCards({HomeNavBar}) {
       }, [deckId]);
    
     const handleFrontChange = (event) => {
+        if (front === undefined || front === null) {
+            console.warn(`Warning: Input is changing an uncontrolled input of type ${event.type} to be controlled.`)
+        }
         setFront(event.target.value)
     }
 
     const handleBackChange = (event) => {
+        if (back === undefined || back === null) {
+            console.warn(`Warning: Input is changing an uncontrolled input of type ${event.type} to be controlled.`)
+        }
         setBack(event.target.value)
     }
     const submitHandler = (event) => {
@@ -46,7 +51,7 @@ function AddCards({HomeNavBar}) {
         <div>
             <p><HomeNavBar /> <span>{deckName} </span><span>/ Add Card</span></p>
             <h1><span>{deckName}</span> : <span>Add Card</span></h1>
-            <CardForm submitHandler={submitHandler} front={front} back={back} handleFrontChange={handleFrontChange} handleBackChange={handleBackChange}/>
+            <CardForm submitHandler={submitHandler} deckId={deckId} front={front} back={back} handleFrontChange={handleFrontChange} handleBackChange={handleBackChange}/>
         </div>
     )
 }

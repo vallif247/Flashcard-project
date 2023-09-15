@@ -1,7 +1,7 @@
 import React from "react";
 import {useHistory} from "react-router-dom";
 
-function CardForm({deckId, submitHandler, front, back, handleFrontChange, handleBackChange}) {
+function CardForm({cancelButton, deckId, submitHandler, front, back, handleFrontChange, handleBackChange}) {
     const history = useHistory()
     return (
     <div>
@@ -14,7 +14,7 @@ function CardForm({deckId, submitHandler, front, back, handleFrontChange, handle
           <label className="label-text" htmlFor="back">Back</label>
           <textarea id="back" value={back} rows="5" onChange={handleBackChange} type="text" name="cardBack" />
       </div>
-      <button type="button" onClick={() => history.push(`/decks/${deckId}/view`)}>Cancel</button>
+      <button type="button" onClick={() => history.push(`/decks/${deckId}/view`)}>{cancelButton}</button>
       <button type="submit">Save</button>
     </form>
     </div>

@@ -54,14 +54,14 @@ const submitHandler = (event) => {
     ...card,
     front: front,
     back: back,
-  }).then((updateCard) => history.push(`/decks/${updateCard.id}/view`))
+  }).then((updateCard) => history.push(`/decks/${deckId}/view`))
 }
 
 return (
   <div>
     <p><HomeNavBar /> {deckName} / Edit Card {cardId}</p>
     <h1>Edit Card</h1>
-    < CardForm submitHandler={submitHandler} front={front} back={back} handleFrontChange={handleFrontChange} handleBackChange={handleBackChange}/>
+    < CardForm cancelButton="Cancel" submitHandler={submitHandler} front={front} back={back} handleFrontChange={handleFrontChange} handleBackChange={handleBackChange}/>
   </div>
 )
 

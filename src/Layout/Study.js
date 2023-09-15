@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { readDeck } from "../utils/api/index";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import ErrorScreen from "./ErrorScreen";
 
 function StudyCards({HomeNavBar}) {
@@ -68,8 +68,8 @@ const flipHandler = () => {
 
     return(
     <div>
-        <p><HomeNavBar /> {deck.name} / Study</p>
-        <h1><span>{deck.name}</span><span>: Study</span></h1>
+        <p><HomeNavBar /> <Link to={`decks/${deckId}`}>{deck.name}</Link> / Study</p>
+        <h1>{deck.name}: Study</h1>
         <div>
             { cards.length<3 
                ? <ErrorScreen deck={deck} cards={cards}/> :

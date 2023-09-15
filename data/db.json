@@ -3,12 +3,12 @@
     {
       "id": 2,
       "name": "React Router",
-      "description": "A collection of navigational components that compose declaratively with your application."
+      "description": "Edited. A collection of navigational components that compose declaratively with your application."
     },
     {
-      "name": "Testing Create Deck",
-      "description": "This is a test deck",
-      "id": 3
+      "id": 3,
+      "name": "edit Testing Create Deck",
+      "description": "This is a test deck"
     },
     {
       "name": "Deck with 2 cards",
@@ -36,12 +36,12 @@
     },
     {
       "front": "This is the front",
-      "back": "A collection of navigational components that compose declaratively with your application.",
+      "back": "Edit. A collection of navigational components that compose declaratively with your application.",
       "deckId": 2,
       "id": 6
     },
     {
-      "front": "This is the front",
+      "front": "This is the front EDIT",
       "back": "This is the back",
       "deckId": 3,
       "id": 10
@@ -57,6 +57,12 @@
       "back": "back of two",
       "deckId": 4,
       "id": 12
+    },
+    {
+      "front": "New front EDIT",
+      "back": "New back",
+      "deckId": 3,
+      "id": 13
     }
   ]
 }

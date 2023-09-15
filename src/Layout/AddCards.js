@@ -51,7 +51,7 @@ function AddCards({HomeNavBar}) {
         <div>
             <p><HomeNavBar /> <span>{deckName} </span><span>/ Add Card</span></p>
             <h1><span>{deckName}</span> : <span>Add Card</span></h1>
-            <CardForm submitHandler={submitHandler} deckId={deckId} front={front} back={back} handleFrontChange={handleFrontChange} handleBackChange={handleBackChange}/>
+            <CardForm cancelButton="Done" submitHandler={submitHandler} deckId={deckId} front={front} back={back} handleFrontChange={handleFrontChange} handleBackChange={handleBackChange}/>
         </div>
     )
 }
